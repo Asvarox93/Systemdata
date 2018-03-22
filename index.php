@@ -66,17 +66,26 @@
 </div>
 </div>
 <div class="container">
-    
+
 <!-- wyswietlanie postów -->
 <?php
-    if(have_posts()):
-        while (have_posts()) : the_post();?>
+    // wyswietlanie 3 postów przy użyciu niestandardowego WP_Query
+    $postQuery = new WP_Query(array(
+        'posts_per_page' => 3
+    ));
+    if($postQuery->have_posts()):
+        while ($postQuery->have_posts()) : $postQuery->the_post();?>
             <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-            <?php the_content();?>
+            <?php 
+            // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
+            echo wp_trim_words(get_the_content(),30);?>
+            <a href="<?php the_permalink();?>">Czytaj więcej</a>
         <?php endwhile;
 
         else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
     endif;
+    // Wymagany reset po użyciu niestandardowego WP_Query
+    wp_reset_postdata();
 ?>
 
 

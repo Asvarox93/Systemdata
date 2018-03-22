@@ -11,7 +11,7 @@
   <?php }
 ?>
 
-<!-- Przygotowane dynamiczne menu przygotowane wzgledem rodziców -->
+<!-- Przygotowane dynamiczne menu wzgledem rodziców -->
 <ul>
   <?php 
     if($theParent){

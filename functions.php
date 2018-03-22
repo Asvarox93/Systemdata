@@ -10,7 +10,8 @@ function load_files(){
 
 function load_features(){
     add_theme_support( 'title-tag' );
-    register_nav_menu('header', 'Górne Menu');
+    register_nav_menu('header-menu', 'Górne Menu');
+    register_nav_menu('footer-menu', 'Stopka Menu');
 }
 
 

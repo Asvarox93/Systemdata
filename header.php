@@ -10,7 +10,14 @@
 
 <body <?php body_class(); ?>>
 
-
+<nav class="upper-nav">
+    <!-- Wczytanie menu stworzonego w pliku function pod nazwa 'header-menu' -->
+    <?php
+        wp_nav_menu(array(
+            'theme_location' => 'header-menu'
+        ));
+    ?>
+</nav>
 
 
 
