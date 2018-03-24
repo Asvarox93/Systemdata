@@ -8,64 +8,57 @@
 <div class="fluid-container">
 <div class="Modern-Slider">
 <!-- Item -->
-<div class="item">
-  <div class="img-fill">
-    <img src="<?php echo get_theme_file_uri('/images/meowsalot.jpg') ?>" alt="">
-    <div class="info">
-      <div class="info-content">
-        <h3>Znajdziemy rozwiązanie</h3>
-        <h4>Twojego problemu</h4>
-        <h5>You can easialy add image, html formatted texts and video layers over each slide and each layer accepts unique animation You can easily add imYou can easialy add image, html formatted texts and video layers over each slide and each layer accepts unique animation You can easily add image, html formatted te You can easialy add image, html formatted texts and video layers over each slide and each layer accepts unique animation You can easily add image, html formatted teage, html formatted texts and video layers over each slide and each layer accepts unique animation.</h5>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- // Item -->
-<!-- Item -->
-<div class="item">
-  <div class="img-fill">
-    <img src="<?php echo get_theme_file_uri('/images/apples.jpg') ?>" alt="">
-    <div class="info">
-      <div class="info-content">
-        <h3>Usługi serwisowe</h3>
-        <h4>Dowiedz się więcej o naszych usługach</h4>
-        <h5>Donec id ornare dui. Aenean tristique condimentum elit, quis blandit nisl varius sit amet. Sed eleifend felis quis massa viverra You can easily add image, html formatted texts and video layers over each slide and each layer accepts unique animation</h5>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- // Item -->
-<!-- Item -->
-<div class="item">
-  <div class="img-fill">
-    <img src="<?php echo get_theme_file_uri('/images/ocean.jpg') ?>" alt="">
-    <div class="info">
-      <div class="info-content">
-        <h3>Awesome Transtions With CSS3</h3>
-        <h4>Alego dela crusiero</h4>
-        <h5>Donec id ornare dui. Aenean tristique condimentum elit, quis blandit nisl varius sit amet. Sed eleifend felis quis massa viverra You can easily add image, html formatted texts and video layers over each slide and each layer accepts unique animation</h5>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- // Item -->
-<!-- Item -->
-<div class="item">
-  <div class="img-fill">
-    <img src="<?php echo get_theme_file_uri('/images/bus.jpg') ?>" alt="">
-    <div class="info">
-      <div class="info-content">
-        <h3>Separate settings per breakpoint</h3>
-        <h4>Alego dela crusiero</h4>
-        <h5>Donec id ornare dui. Aenean tristique condimentum elit, quis blandit nisl varius sit amet. Sed eleifend felis quis massa viverra You can easily add image, html formatted texts and video layers over each slide and each layer accepts unique animation</h5>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Wyświetlanie postów z sekcji slajder -->
+<?php
+    $SlajdQuery = new WP_Query(array(
+        'posts_per_page' => 4,
+        'post_type' => 'Slider'
+    ));
+
+    if($SlajdQuery->have_posts()):
+        while ($SlajdQuery->have_posts()) : $SlajdQuery->the_post();?>
+           <div class="item">
+           <div class="img-fill">
+             <?php if ( has_post_thumbnail() ) {
+                     the_post_thumbnail(); 
+             } ?>
+             <div class="info">
+               <div class="info-content">
+                 <h3><?php the_title(); ?></h3>
+                 <?php if ( function_exists( 'the_subtitle' ) ) {
+                    the_subtitle( '<h4>', '</h4>' );
+                }?>
+                 <h5><?php echo get_the_content(); ?></h5></div>
+             </div>
+           </div>
+         </div>
+        <?php endwhile;
+        else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
+    endif;
+?>
+
 <!-- // Item -->
 </div>
 </div>
 <div class="container">
+
+<!-- Wyświetlanie postów z sekcji o firmie -->
+<?php
+    $firmaQuery = new WP_Query(array(
+        'posts_per_page' => 4,
+        'post_type' => 'O firmie'
+    ));
+
+    if($firmaQuery->have_posts()):
+        while ($firmaQuery->have_posts()) : $firmaQuery->the_post();?>
+            <h2><?php the_title(); ?></h2>
+           <p> <?php 
+            // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
+            the_content();?></p>
+        <?php endwhile;
+        else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
+    endif;
+?>
 
 <!-- wyswietlanie postów -->
 <?php
@@ -75,10 +68,17 @@
     ));
     if($postQuery->have_posts()):
         while ($postQuery->have_posts()) : $postQuery->the_post();?>
+            <?php if ( has_post_thumbnail() ) {
+              the_post_thumbnail(); 
+            } ?>
             <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
             <?php 
             // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
-            echo wp_trim_words(get_the_content(),30);?>
+            if( has_excerpt()){
+               echo get_the_excerpt();
+            } else {
+                echo wp_trim_words(get_the_content(),30);
+            }?>
             <a href="<?php the_permalink();?>">Czytaj więcej</a>
         <?php endwhile;
 
