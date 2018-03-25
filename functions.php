@@ -60,6 +60,13 @@ function load_post_types(){
     add_post_type_support( 'slider', 'subtitles' );
 }
 
+function add_classes_on_li($classes, $item, $args) {
+  $classes[] = 'nav-item';
+  return $classes;
+}
+
+
+
 // Wywoływanie funkcji
 add_theme_support( 'post-thumbnails' ); 
 add_action( 'wp_enqueue_scripts', 'load_files');
@@ -67,5 +74,6 @@ add_action( 'after_setup_theme','load_features');
 add_action( 'init', 'load_post_types');
 add_image_size( 'ofirmie_thumb', 152, 152);
 add_image_size( 'post_thumb', 250, 250, true);
+add_filter('nav_menu_css_class','add_classes_on_li',1,3);
 ?>
 
