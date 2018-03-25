@@ -65,6 +65,7 @@ add_theme_support( 'post-thumbnails' );
 add_action( 'wp_enqueue_scripts', 'load_files');
 add_action( 'after_setup_theme','load_features');
 add_action( 'init', 'load_post_types');
-
+add_image_size( 'ofirmie_thumb', 152, 152);
+add_image_size( 'post_thumb', 250, 250, true);
 ?>
 

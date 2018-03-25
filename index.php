@@ -51,6 +51,9 @@
 
     if($firmaQuery->have_posts()):
         while ($firmaQuery->have_posts()) : $firmaQuery->the_post();?>
+         <?php if ( has_post_thumbnail() ) {
+              the_post_thumbnail('ofirmie_thumb'); 
+            } ?>
             <h2><?php the_title(); ?></h2>
            <p> <?php 
             // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
@@ -69,7 +72,7 @@
     if($postQuery->have_posts()):
         while ($postQuery->have_posts()) : $postQuery->the_post();?>
             <?php if ( has_post_thumbnail() ) {
-              the_post_thumbnail(); 
+              the_post_thumbnail('post_thumb'); 
             } ?>
             <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
             <?php 
