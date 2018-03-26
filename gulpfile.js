@@ -88,6 +88,7 @@ gulp.task("watch", () => {
   });
   gulp.watch(SCSS_PATH, ["style"]);
   gulp.watch(HTML_PATH, ["dom"]);
+  livereload();
 });
 
 gulp.task("clean", () => {

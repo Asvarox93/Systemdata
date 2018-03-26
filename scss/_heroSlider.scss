@@ -44,7 +44,7 @@
 
 /* ==== Slider Style === */
 .Modern-Slider .item .img-fill {
-  height: 100vh;
+  height: 90vh;
   background: #000;
 }
 
@@ -66,7 +66,8 @@
 .Modern-Slider .item .info > div {
   display: inline-block !important;
   position: relative;
-  top: 15%;
+  top: 0px;
+  padding: 0 20px;
 }
 
 .Modern-Slider .NextArrow {
@@ -139,7 +140,7 @@
 }
 
 .Modern-Slider .item h3 {
-  font: 3.5em RalewayB;
+  font: 3em RalewayB;
   max-width: 1000px;
   text-transform: uppercase;
   color: #fff;
@@ -150,10 +151,10 @@
   margin: 0 auto;
 }
 .Modern-Slider .item h4 {
-  font: 3.5em RalewayB;
+  font: 3em RalewayB;
   text-transform: uppercase;
   max-width: 1000px;
-  color: $main-color;
+  color: darken($main-color, 20%);
   font-weight: bold;
   margin: 0 auto;
   margin: 0;

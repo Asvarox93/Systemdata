@@ -42,7 +42,8 @@
 </div>
 <div class="container">
 
-<!-- Wyświetlanie postów z sekcji o firmie -->
+<div class="card-deck">
+    <!-- Wyświetlanie postów z sekcji o firmie -->
 <?php
     $firmaQuery = new WP_Query(array(
         'posts_per_page' => 4,
@@ -51,18 +52,89 @@
 
     if($firmaQuery->have_posts()):
         while ($firmaQuery->have_posts()) : $firmaQuery->the_post();?>
-         <?php if ( has_post_thumbnail() ) {
-              the_post_thumbnail('ofirmie_thumb'); 
-            } ?>
-            <h2><?php the_title(); ?></h2>
-           <p> <?php 
-            // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
-            the_content();?></p>
+
+<div class="card">
+    <?php if ( has_post_thumbnail() ) {
+                the_post_thumbnail('ofirmie_thumb', ['class' => 'card-img-position']); 
+    } ?>
+    <div class="card-body">
+      <h5 class="card-title"><?php the_title(); ?></h5>
+      <p class="card-text"><?php the_content();?></p>
+    </div>
+  </div>
         <?php endwhile;
         else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
     endif;
-?>
+?> 
+</div>
 
+</div><!--  div container -->
+
+<div class="container-fluid bar">
+<h2 class="bar-title">Dlaczego My</h2>  
+</div>
+
+<div class="container-fluid dlaczego-my">
+<div class="container pb-5 pt-5 ">
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-3 dlaczego-bar-l">
+        <?php
+            $dlaczego_L_Query = new WP_Query(array(
+                'posts_per_page' => 3,
+                'post_type' => 'DlaczegoMyL'
+            ));
+
+            if($dlaczego_L_Query->have_posts()):
+                while ($dlaczego_L_Query->have_posts()) : $dlaczego_L_Query->the_post();?>
+
+            <div class="col-12 dlaczego">
+                <i class="dlaczego-l-ico fa <?php the_field('dlaczego_my_ico'); ?>"></i>
+                <h2 class="dlaczego-l-title"><?php the_title(); ?></h2>
+                <p class="dlaczego-l-content"><?php echo get_the_content();?></p>
+                
+            </div>
+                <?php endwhile;
+                else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
+            endif;
+        ?> 
+     </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+    <?php get_post( 499 ); ?>
+            <div class="col-12">
+                <img class="dlaczego-l-img" src="<?php $get_img = get_field('dlaczego_my_zdj'); echo $get_img['url'] ?>" alt="">
+            </div>
+     </div>
+    <div class="col-sm-12 col-md-12 col-lg-3 dlaczego-bar-p">
+    <?php
+            $dlaczego_P_Query = new WP_Query(array(
+                'posts_per_page' => 3,
+                'post_type' => 'DlaczegoMyP'
+            ));
+
+            if($dlaczego_P_Query->have_posts()):
+                while ($dlaczego_P_Query->have_posts()) : $dlaczego_P_Query->the_post();?>
+
+            <div class="col-12 dlaczego">
+                <i class="dlaczego-p-ico fa <?php the_field('dlaczego_my_ico'); ?>"></i>
+                <h2 class="dlaczego-p-title"><?php the_title(); ?></h2>
+                <p class="dlaczego-p-content"><?php echo get_the_content();?></p>
+            
+            </div>
+                <?php endwhile;
+                else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
+            endif;
+        ?> 
+     </div>
+    </div>
+  </div>
+</div><!--  div container -->
+</div><!--  div container-fluid -->
+
+<div class="container-fluid bar">
+<h2 class="bar-title">Aktualności</h2>  
+</div>
+
+<div class="container">
 <!-- wyswietlanie postów -->
 <?php
     // wyswietlanie 3 postów przy użyciu niestandardowego WP_Query

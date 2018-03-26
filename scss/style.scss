@@ -6,7 +6,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
-
+.container {
+  max-width: 1280px;
+}
 .nav-item a {
   display: block;
   padding: 0.5rem 1rem;
@@ -61,4 +63,212 @@ body {
 }
 .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#31b6e9' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@mixin card-deck-column-count($count: 1) {
+  flex: 0 0 calc(100% / #{$count} - 30px);
+}
+
+.card-deck {
+  .card {
+    @media (min-width: 576px) {
+      @include card-deck-column-count(1);
+    }
+
+    @media (min-width: 768px) {
+      @include card-deck-column-count(2);
+    }
+
+    @media (min-width: 992px) {
+      @include card-deck-column-count(2);
+    }
+
+    @media (min-width: 1200px) {
+      @include card-deck-column-count(4);
+    }
+  }
+}
+
+.card {
+  border: none;
+  background: none;
+  position: relative;
+  top: -70px;
+
+  &-img-position {
+    margin: 0 auto;
+  }
+
+  &-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    height: 50px;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.bar {
+  background-color: darken($main-color, 20%);
+  box-shadow: 1px 1px 10px #888888, -1px -1px 10px #888888;
+  &-title {
+    font-size: 2em;
+    padding: 20px 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+.dlaczego-my {
+  background-color: #e8e8e8;
+}
+.dlaczego {
+  //border-bottom: 1px solid grey;
+  margin-bottom: 60px;
+  position: relative;
+  height: 85px;
+
+  &:last-child {
+    border: none;
+    margin-bottom: 0;
+  }
+
+  &-bar-l {
+    &::before {
+      content: "";
+      height: 80px;
+      position: absolute;
+      top: 55px;
+      z-index: 0;
+      right: 20px;
+      border-right: 2px dotted grey;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      height: 90px;
+      position: absolute;
+      top: 200px;
+      z-index: 0;
+      right: 20px;
+      border-right: 2px dotted grey;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+  }
+
+  &-bar-p {
+    &::before {
+      content: "";
+      height: 80px;
+      position: absolute;
+      top: 55px;
+      z-index: 0;
+      left: 20px;
+      border-right: 2px dotted grey;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      height: 80px;
+      position: absolute;
+      top: 200px;
+      z-index: 0;
+      left: 20px;
+      border-right: 2px dotted grey;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+  }
+
+  &-l-title,
+  &-l-content {
+    text-align: right;
+    margin-right: 40px;
+    @media (max-width: 991px) {
+      text-align: center;
+      margin-right: 0px;
+    }
+  }
+
+  &-p-title,
+  &-p-content {
+    text-align: left;
+    margin-left: 40px;
+    @media (max-width: 991px) {
+      text-align: center;
+      margin-left: 0px;
+    }
+  }
+
+  &-l-img {
+    width: 100%;
+    @media (max-width: 991px) {
+      display: block;
+      width: 70%;
+      margin: 50px auto;
+    }
+  }
+
+  &-l-title,
+  &-p-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    @media (max-width: 991px) {
+      margin-top: 100px;
+    }
+  }
+
+  &-l-ico {
+    position: absolute;
+    top: 0px;
+    right: -20px;
+    font-size: 3em !important;
+    z-index: 1;
+    text-align: center;
+    width: 48px;
+    @media (max-width: 991px) {
+      font-size: 5em !important;
+      left: -50px;
+      top: -100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+  &:nth-child(2) {
+    .dlaczego-l-ico,
+    .dlaczego-p-ico {
+      color: darken($main-color, 20%);
+    }
+  }
+  &-p-ico {
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    font-size: 3em !important;
+    z-index: 1;
+    text-align: center;
+    width: 48px;
+    @media (max-width: 991px) {
+      font-size: 5em !important;
+      position: absolute;
+      right: 0px;
+      top: -100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
 }

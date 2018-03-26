@@ -52,7 +52,40 @@ function load_post_types(){
             'singular_name' => 'Slajd',
         ),
     ));
+   
+    register_post_type('DlaczegoMyL', array(
+        'supports' => array(
+            'title',
+            'editor',
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-editor-outdent',
+        'labels' => array(
+            'name' => 'Dlaczego My Lewa',
+            'add_new' => 'Nowy post',
+            'add_new_item' => 'Dodaj Nowy post',
+            'edit_item' => 'Edytuj post',
+            'all_items' => 'Wszystkie posty',
+            'singular_name' => 'post',
+        ),
+    ));
 
+    register_post_type('DlaczegoMyP', array(
+        'supports' => array(
+            'title',
+            'editor',
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-editor-indent',
+        'labels' => array(
+            'name' => 'Dlaczego My Prawa',
+            'add_new' => 'Nowy post',
+            'add_new_item' => 'Dodaj Nowy post',
+            'edit_item' => 'Edytuj post',
+            'all_items' => 'Wszystkie posty',
+            'singular_name' => 'post',
+        ),
+    ));
     //Usuwanie subtitle z post i page
     remove_post_type_support( 'post', 'subtitles' );
     remove_post_type_support( 'page', 'subtitles' );
