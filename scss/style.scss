@@ -87,6 +87,24 @@ body {
       @include card-deck-column-count(4);
     }
   }
+
+  .card--modify {
+    @media (min-width: 576px) {
+      @include card-deck-column-count(1);
+    }
+
+    @media (min-width: 768px) {
+      @include card-deck-column-count(1);
+    }
+
+    @media (min-width: 992px) {
+      @include card-deck-column-count(3);
+    }
+
+    @media (min-width: 1200px) {
+      @include card-deck-column-count(3);
+    }
+  }
 }
 
 .card {
@@ -95,6 +113,70 @@ body {
   position: relative;
   top: -70px;
 
+  &--modify {
+    position: relative;
+    margin-top: 30px;
+    top: 0;
+    &::after {
+      position: absolute;
+      content: "";
+      height: 550px;
+      width: 2px;
+      right: 0;
+      top: 20px;
+      border-left: 1px solid rgb(199, 198, 198);
+    }
+    &:last-child {
+      &::after {
+        border: none;
+      }
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 1.5em;
+      &:hover {
+        a {
+          text-decoration: none;
+          color: $main-color;
+        }
+      }
+    }
+
+    .card-text {
+      text-align: left;
+      margin: 0 20px 0 0;
+      height: 150px;
+    }
+    .card-distance {
+      height: 330px;
+    }
+    .card-img-center {
+      display: block;
+      margin: 10px auto 0px auto;
+    }
+    .card-content-section {
+      position: relative;
+    }
+    .card-read {
+      padding: 20px 30px;
+      background: darken($main-color, 20%);
+      color: #fff;
+      // position: absolute;
+      // left: 180px;
+      // bottom: 0px;
+      margin-right: 30px;
+      display: block;
+      text-align: center;
+      transition: 0.2s all ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+        background: $main-color;
+        transition: 0.2s all ease-in-out;
+      }
+    }
+  }
   &-img-position {
     margin: 0 auto;
   }

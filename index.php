@@ -20,7 +20,7 @@
            <div class="item">
            <div class="img-fill">
              <?php if ( has_post_thumbnail() ) {
-                     the_post_thumbnail(); 
+                     the_post_thumbnail('sldier_thumb'); 
              } ?>
              <div class="info">
                <div class="info-content">
@@ -136,6 +136,8 @@
 
 <div class="container">
 <!-- wyswietlanie postów -->
+
+<div class="card-deck">
 <?php
     // wyswietlanie 3 postów przy użyciu niestandardowego WP_Query
     $postQuery = new WP_Query(array(
@@ -143,18 +145,30 @@
     ));
     if($postQuery->have_posts()):
         while ($postQuery->have_posts()) : $postQuery->the_post();?>
-            <?php if ( has_post_thumbnail() ) {
-              the_post_thumbnail('post_thumb'); 
+
+<div class="card card--modify">
+    <div class="card-body">
+        <div class="card-time mb-3"><?php the_time('F j, Y'); ?></div>
+        <div class="card-distance">
+      <h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+      <?php if ( has_post_thumbnail() ) {
+              the_post_thumbnail('post_thumb',['class' => 'card-img-center']); 
             } ?>
-            <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-            <?php 
+      </div>
+      <div class="card-content-section">
+      <p class="card-text"><?php 
             // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
             if( has_excerpt()){
                echo get_the_excerpt();
             } else {
                 echo wp_trim_words(get_the_content(),30);
             }?>
-            <a href="<?php the_permalink();?>">Czytaj więcej</a>
+        </p>
+        <a class="card-read" href="<?php the_permalink();?>">Czytaj więcej</a>
+        </div>   
+    </div>
+  </div>
+           
         <?php endwhile;
 
         else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
@@ -162,8 +176,8 @@
     // Wymagany reset po użyciu niestandardowego WP_Query
     wp_reset_postdata();
 ?>
-
+</div>
 
 
 <!-- wyswietlanie stopki -->
-<?php  get_footer(); ?>
+<!-- <?php  get_footer(); ?> -->
