@@ -31,6 +31,14 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm ">
+        <div class="copyright-text text-center mt-4">
+            <p>Copyright &copy; <?php echo date('Y'); ?> System Data Sp. z o.o. Wszystkie prawa zastrzeżone</p>
+        </div>
+    </div>
+</div>
 </div>
 </div> <!-- div.container-fluid -->
 
