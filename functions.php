@@ -86,6 +86,36 @@ function load_post_types(){
             'singular_name' => 'post',
         ),
     ));
+
+
+    //dodawnie widgetow jako footer
+    register_sidebar( array(
+        'name' => 'Stopka Lewa',
+        'id' => 'footer-sidebar-1',
+        'description' => 'Lewa strona stopki',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+        'name' => 'Stopka Środek',
+        'id' => 'footer-sidebar-2',
+        'description' => 'Środkej stopki',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+        'name' => 'Stopka Prawa',
+        'id' => 'footer-sidebar-3',
+        'description' => 'Prawa strona stopki',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        ) );
     //Usuwanie subtitle z post i page
     remove_post_type_support( 'post', 'subtitles' );
     remove_post_type_support( 'page', 'subtitles' );

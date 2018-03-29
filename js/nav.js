@@ -10,7 +10,9 @@
     } else {
       $(".navbar").removeClass("fixed-top");
       $(".navbar").removeClass("bg-light");
-      $(".navbar").addClass("navbar-position");
+      if (!$("#navbar-page").hasClass("navbar")) {
+        $(".navbar").addClass("navbar-position");
+      }
       $(".nav-item").removeClass("nav-item-black");
     }
   });

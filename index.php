@@ -3,7 +3,22 @@
 
 <!-- wyswietlanie headera -->
 <?php  get_header(); ?>
-
+<nav class="navbar-position navbar navbar-expand-lg pt-2 pb-2 navbar-light">
+  <a class="navbar-brand" href="/">System<span>Data</span></a>
+  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   <!-- Wczytanie menu stworzonego w pliku function pod nazwa 'header-menu' -->
+   <?php
+   wp_nav_menu(array(
+       'theme_location' => 'header-menu',
+       'menu_class' => 'navbar-nav ml-auto mt-2 mt-lg-0',
+       'menu_id' => 'main-nav',
+       'container_class' => 'collapse navbar-collapse',
+       'container_id' => 'navbarNav',
+   ));
+?>
+</nav>
 <!-- wyswietlanie slidera -->
 <div class="fluid-container">
 <div class="Modern-Slider">
@@ -137,8 +152,8 @@
 <div class="container">
 <!-- wyswietlanie postów -->
 
-<div class="card-deck">
-<?php
+    <div class="card-deck">
+    <?php
     // wyswietlanie 3 postów przy użyciu niestandardowego WP_Query
     $postQuery = new WP_Query(array(
         'posts_per_page' => 3
@@ -146,20 +161,20 @@
     if($postQuery->have_posts()):
         while ($postQuery->have_posts()) : $postQuery->the_post();?>
 
-<div class="card card--modify">
+    <div class="card card--modify">
     <div class="card-body">
         <div class="card-time mb-3"><?php the_time('F j, Y'); ?></div>
         <div class="card-distance">
-      <h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-      <?php if ( has_post_thumbnail() ) {
-              the_post_thumbnail('post_thumb',['class' => 'card-img-center']); 
+        <h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+        <?php if ( has_post_thumbnail() ) {
+                the_post_thumbnail('post_thumb',['class' => 'card-img-center']); 
             } ?>
-      </div>
-      <div class="card-content-section">
-      <p class="card-text"><?php 
+        </div>
+        <div class="card-content-section">
+        <p class="card-text"><?php 
             // wyswietlanie 30 słów contentu, jeśli ma wyświetlać całość używamy funkcji the_content()
             if( has_excerpt()){
-               echo get_the_excerpt();
+                echo get_the_excerpt();
             } else {
                 echo wp_trim_words(get_the_content(),30);
             }?>
@@ -167,17 +182,17 @@
         <a class="card-read" href="<?php the_permalink();?>">Czytaj więcej</a>
         </div>   
     </div>
-  </div>
-           
+    </div>
+            
         <?php endwhile;
 
         else: echo '<p> Nie znaleziono postów do wyświetlenia</p>';
     endif;
     // Wymagany reset po użyciu niestandardowego WP_Query
     wp_reset_postdata();
-?>
-</div>
+    ?>
+    </div>
 
-
+</div> <!-- div.container -->
 <!-- wyswietlanie stopki -->
-<!-- <?php  get_footer(); ?> -->
+<?php  get_footer(); ?> 

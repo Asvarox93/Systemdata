@@ -1,0 +1,56 @@
+.page-distance {
+  height: 58px;
+}
+
+.main_nav--modify {
+  .nav-item a {
+    color: #000;
+  }
+}
+
+.page-content {
+  padding: 0;
+  min-height: 51vh;
+  &-items {
+    margin: 0;
+  }
+  &-where {
+    font-size: 1.2em;
+    background-color: darken($main-color, 20%);
+    border-radius: 0 0 20px 0;
+    width: fit-content;
+    padding: 20px;
+    position: relative;
+    top: -10px;
+    box-shadow: 2px 2px 6px #888888;
+    color: #fff;
+
+    a {
+      color: #fff;
+    }
+  }
+  &-menu {
+    margin-left: 10px;
+    border-right: 1px solid #dbdbdb;
+
+    li {
+      margin-top: 15px;
+      ::before {
+        content: "\2192   ";
+      }
+
+      &:hover {
+        ::before {
+          color: $main-color;
+        }
+      }
+    }
+    a {
+      color: #000;
+      font-size: 1.1em;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

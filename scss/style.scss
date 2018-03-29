@@ -1,5 +1,6 @@
 @import "reseter";
 @import "general";
+@import "page";
 @import "heroSlider";
 
 body {
@@ -24,7 +25,7 @@ body {
 }
 
 .navbar {
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 
   &-position {
     position: absolute;
@@ -45,11 +46,18 @@ body {
 }
 
 .collapsing {
-  // transition: 0.2s all ease-in-out;
+  z-index: 999;
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
 .show {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  z-index: 999;
+  background-color: #fff !important;
+  box-shadow: 1px 3px 8px #888888;
+}
+.fixed-top {
+  .show {
+    box-shadow: none !important;
+  }
 }
 .collapsing .nav-item a,
 .show .nav-item a {
@@ -131,7 +139,11 @@ body {
         border: none;
       }
     }
-
+    @media (max-width: 991px) {
+      &::after {
+        border: none;
+      }
+    }
     .card-title {
       text-align: center;
       font-size: 1.5em;
@@ -145,38 +157,78 @@ body {
 
     .card-text {
       text-align: left;
-      margin: 0 20px 0 0;
-      height: 150px;
+      margin: 10px 0 0 0;
     }
     .card-distance {
       height: 330px;
+      margin-top: 20px;
+    }
+    .card-content-section {
+      height: 200px;
+      position: relative;
     }
     .card-img-center {
       display: block;
       margin: 10px auto 0px auto;
     }
-    .card-content-section {
-      position: relative;
-    }
+
     .card-read {
       padding: 20px 30px;
       background: darken($main-color, 20%);
       color: #fff;
-      // position: absolute;
-      // left: 180px;
-      // bottom: 0px;
-      margin-right: 30px;
-      display: block;
+      width: 90%;
+      position: absolute;
+      bottom: 0;
       text-align: center;
       transition: 0.2s all ease-in-out;
       &:hover {
-        transform: scale(1.1);
+        padding-bottom: 19px;
+        font-size: 1.1em;
         text-decoration: none;
         background: $main-color;
         transition: 0.2s all ease-in-out;
       }
+      @media (max-width: 991px) {
+        width: 100%;
+      }
     }
   }
+
+  &--footer {
+    position: static;
+    top: 0;
+
+    h3 {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    div p {
+      text-align: left;
+      max-width: 350px;
+      margin: 20px 0 30px 0;
+    }
+
+    .card-body--modify {
+      @media (min-width: 575px) {
+        margin: 0 auto;
+      }
+
+      a {
+        color: #fff;
+
+        @media (max-width: 575px) {
+          text-align: center;
+        }
+
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+  }
+
   &-img-position {
     margin: 0 auto;
   }
@@ -352,5 +404,31 @@ body {
       margin: 0 auto;
       text-align: center;
     }
+  }
+}
+
+.footer-modify {
+  background-color: #373737;
+  border-top: 5px solid darken($main-color, 20%);
+  color: #fff;
+}
+
+.wpcf7-submit {
+  padding: 20px 40px;
+  background-color: darken($main-color, 20%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $main-color;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-content-info--modify {
+    margin-top: 30px;
   }
 }

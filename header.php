@@ -14,22 +14,4 @@
 <body <?php body_class(); ?>>
 
 
-<nav class="navbar-position navbar navbar-expand-lg pt-2 pb-2 navbar-light">
-  <a class="navbar-brand" href="/">System<span>Data</span></a>
-  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-   <!-- Wczytanie menu stworzonego w pliku function pod nazwa 'header-menu' -->
-   <?php
-   wp_nav_menu(array(
-       'theme_location' => 'header-menu',
-       'menu_class' => 'navbar-nav ml-auto mt-2 mt-lg-0',
-       'menu_id' => 'main-nav',
-       'container_class' => 'collapse navbar-collapse',
-       'container_id' => 'navbarNav',
-   ));
-?>
-</nav>
-
-
 
