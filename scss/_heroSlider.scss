@@ -149,6 +149,10 @@
   padding: 0;
   text-align: center;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font: 2em RalewayB;
+  }
 }
 .Modern-Slider .item h4 {
   font: 3em RalewayB;
@@ -160,6 +164,10 @@
   margin: 0;
   padding: 0;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font: 2em RalewayB;
+  }
 }
 .Modern-Slider .item h5 {
   position: relative;
@@ -171,6 +179,10 @@
   color: #fff;
   max-width: 1000px;
   height: fit-content;
+
+  @media (max-width: 768px) {
+    font: 1.1em RalewayB;
+  }
 }
 
 .Modern-Slider {

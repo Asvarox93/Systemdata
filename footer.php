@@ -34,7 +34,7 @@
 
 <div class="row">
     <div class="col-sm ">
-        <div class="copyright-text text-center mt-4">
+        <div class="copyright-text text-center mt-4 mb-4">
             <p>Copyright &copy; <?php echo date('Y'); ?> System Data Sp. z o.o. Wszystkie prawa zastrzeżone</p>
         </div>
     </div>

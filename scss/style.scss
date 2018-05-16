@@ -215,6 +215,16 @@ body {
         margin: 0 auto;
       }
 
+      ul,
+      ol {
+        padding: 0;
+        list-style: none;
+
+        li a {
+          padding: auto 0;
+        }
+      }
+
       a {
         color: #fff;
 
